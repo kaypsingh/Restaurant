@@ -14,7 +14,7 @@ class App extends React.Component{
   render(){
       return(
           <>
-       <Route exact path="/" component={ Restaurants } />
+       {/* <Route exact path="/" component={ Restaurants } /> */}
        <Route path="/Restaurants" component={Restaurants} />
        <Route path="/EditRestaurants/:id" component={EditRestaurants} />
        <Route path="/AddRestaurants" component={AddRestaurants} />
