@@ -9,7 +9,7 @@ class EditRestaurants extends React.Component {
     super(props);
     const res = JSON.parse(localStorage.getItem("added-items"));
     console.log(res, this.props)
-    // res.filter(r => r.id === this.props.l)
+   
     this.state = {
       value: ''
     };
@@ -23,25 +23,34 @@ class EditRestaurants extends React.Component {
 
     event.preventDefault();
 
-    alert('Restaurant edited successfully')
+    // alert('Restaurant edited successfully')
 
     try {
-    
+
       var a = localStorage.getItem('added-items')
       const b = JSON.parse(a);
-    
 
-      const c = b.map(o => {
+      const c = b.map(op => {
+        var pid = this.props.match.params.id
 
-        if (o.id === this.props.match.params.id) {
+        console.log(pid)
+        console.log(op.id)
 
-          o.name = this.state.value
+        if (op.id == pid) {
+          // console.log('hanji')
+          op.name = this.state.value
+
         }
 
-        return o;
-      })
+        else { 
+          // console.log('bye') 
+        }
 
-     
+
+        return op;
+      })
+      console.log(c)
+    
       localStorage.setItem('added-items', JSON.stringify(c));
 
 
@@ -54,13 +63,8 @@ class EditRestaurants extends React.Component {
   }
 
 
-  componentDidMount() {
-
-  }
-
   render() {
 
-    console.log(this.props.match.params.id)
 
     var a = 'https://get.wallhere.com/photo/night-reflection-table-evening-glass-bar-restaurant-bokeh-Budapest-Hungary-diner-light-lighting-noche-dinner-nuit-hongrie-verre-vidrio-hungria-honga-863223.jpg'
     return (

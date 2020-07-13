@@ -18,8 +18,8 @@ class Restaurants extends React.Component {
             width: window.innerWidth,
             modal: 0,
             submit: 0,
-
-            value1: ''
+            newMenu: [],
+            value1: 'create a menu string'
         }
     }
 
@@ -33,9 +33,16 @@ class Restaurants extends React.Component {
     }
 
     handleSubmit = (event) => {
-        this.setState({ submit: 1 })
+        console.log(this.state.value1)
+        console.log(this.state.newMenu)
+        var i = this.state.value1
 
-        // console.log(this.state.value)
+        var k = this.state.newMenu.concat(i)
+
+        this.setState({ submit: 1, newMenu: k } , () => {
+            console.log(this.state.newMenu)
+        })
+
         event.preventDefault();
     }
 
@@ -54,13 +61,10 @@ class Restaurants extends React.Component {
 
         if (this.state.modal === 1) {
 
-            // console.log(this.state.filteredPerson)
-
             return (
                 <>
 
                     <div id="myModal" className="modal" style={{ height: window.innerHeight }}>
-
 
                         <div className="modal-content">
                             <span className="close" onClick={this.closeModal}>&times;</span>
@@ -71,11 +75,7 @@ class Restaurants extends React.Component {
 
                             <div>
                                 <h1>Restaurant Name : {this.state.filteredPerson.name}</h1>
-                                {/* <p>Restaurant Id :{this.state.filteredPerson.id}</p>
-                            <p>Neighborhood :{this.state.filteredPerson.neighborhood}</p>
-                            <p>Cuisine_type :{this.state.filteredPerson.cuisine_type}</p> */}
-
-
+                            
                                 <div style={{ backgroundColor: 'yellow' }}>
                                     <Card >
                                         <h1>Add new Menu</h1>
@@ -90,7 +90,22 @@ class Restaurants extends React.Component {
                                             {/* <Link to="/AddRestaurants">Want to add a new restaurant ? </Link> */}
 
                                             <br></br>
-                                            {this.state.submit === 1 ? this.state.value1 : ''}
+                                           
+                                           <h2>
+                                              
+
+                                               
+                                    {this.state.submit === 1 ?  this.state.newMenu : ''}  
+
+                                 
+                                     
+                                      
+                                      </h2>
+
+
+   
+
+                                      
                                         </form>
                                     </Card>
                                 </div>
@@ -174,9 +189,9 @@ class Restaurants extends React.Component {
                                 <div onClick={() => this.PopupOnOff(m, k)}
                                     style={{ backgroundColor: 'yellow', width: 300 }}>
                                     <div style={{ backgroundColor: '' }} className='restl' >{m.name} {' '} {this.state.edit === 1 ?
-                                        // <button> <Link to="/EditRestaurants/">edit  </Link></button>
+                                      
                                         <Link to={newTo}>edit </Link>
-                                        //  <button onClick={() => this.edithandlr(k)}> edit</button> 
+                                   
                                         : ''}</div>
 
                                 </div>
