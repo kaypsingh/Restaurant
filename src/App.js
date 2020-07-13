@@ -14,7 +14,7 @@ class App extends React.Component{
   render(){
       return(
           <>
-      heroku create $APP_NAME --buildpack mars/create-react-app */}
+      
        <Route path="/Restaurants" component={Restaurants} />
        <Route path="/EditRestaurants/:id" component={EditRestaurants} />
        <Route path="/AddRestaurants" component={AddRestaurants} />
