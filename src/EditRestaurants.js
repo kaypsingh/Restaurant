@@ -23,7 +23,7 @@ class EditRestaurants extends React.Component {
 
     event.preventDefault();
 
-    // alert('Restaurant edited successfully')
+    alert('Restaurant edited successfully')
 
     try {
 
@@ -31,7 +31,8 @@ class EditRestaurants extends React.Component {
       const b = JSON.parse(a);
 
       const c = b.map(op => {
-        var pid = this.props.match.params.id
+        var pid = parseInt( this.props.match.params.id) + 1
+       
 
         console.log(pid)
         console.log(op.id)
@@ -41,6 +42,7 @@ class EditRestaurants extends React.Component {
           op.name = this.state.value
 
         }
+
 
         else { 
           // console.log('bye') 

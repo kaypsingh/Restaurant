@@ -29,6 +29,8 @@ class DisplayRestaurants extends React.Component {
     }
 
     fetchData = () => {
+
+       
         try {
             const restlist = localStorage.getItem('added-items')
             this.setState({

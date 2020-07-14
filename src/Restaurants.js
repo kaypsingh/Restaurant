@@ -19,7 +19,7 @@ class Restaurants extends React.Component {
             modal: 0,
             submit: 0,
             newMenu: [],
-            value1: 'create a menu string'
+            value1: 'menu items string'
         }
     }
 
@@ -127,17 +127,45 @@ class Restaurants extends React.Component {
     }
 
     fetchData = () => {
-        try {
-            const rest = localStorage.getItem('added-items')
-            this.setState({
-                rest: JSON.parse(rest)
-            });
-        } catch {
+
+// console.log(localStorage.length)
+        if(localStorage.length === 0){
+            console.log('10')
             this.setState({
                 rest: data[0].restaurants
-            });
-            localStorage.setItem('added-items', JSON.stringify(data[0].restaurants));
+            } );
+
+                localStorage.setItem('added-items', JSON.stringify(data[0].restaurants));
+           
+
+
+        } else{
+
+            const rest = localStorage.getItem('added-items')
+            // console.log('1')
+            this.setState({
+                rest: JSON.parse(rest)
+            } );
+                // localStorage.setItem('added-items', JSON.stringify(data[0].restaurants));
+         
         }
+        // console.log(data[0].restaurants)
+        // console.log(localStorage.getItem('added-items').length)
+        // localStorage.setItem('added-items', JSON.stringify(data[0].restaurants));
+
+        // try {
+        //     const rest = localStorage.getItem('added-items')
+        //     console.log('1')
+        //     this.setState({
+        //         rest: JSON.parse(rest)
+        //     });
+        // } catch {
+        //     console.log('2')
+        //     this.setState({
+        //         rest: data[0].restaurants
+        //     });
+            // localStorage.setItem('added-items', JSON.stringify(data[0].restaurants));
+        
     }
 
     edithandlr = (j) => {
@@ -166,7 +194,7 @@ class Restaurants extends React.Component {
 
         var bimg = 'https://wallpapercave.com/wp/wp1874155.jpg'
         const { k } = this.state;
-        const person = k !== null ? this.state.rest[k] : {};
+        // const person = k !== null ? this.state.rest[k] : {};
 
 
 
